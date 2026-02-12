@@ -12,6 +12,11 @@ public class HelloService {
         return "Hello " + name;
     }
 
+    public String hello(String firstName, String lastName) {
+        log.info("Call HelloService.hello({}, {})", firstName, lastName);
+        return "Hello " + firstName + " " + lastName;
+    }
+
     public String bye(String name) {
         log.info("Call HelloService.bye({})", name);
         return "Bye " + name;
