@@ -61,5 +61,29 @@ public class LogAspect {
         log.info("Execute method with parameter : {}", value);
     }
 
+    @Pointcut("execution(* programmershinobi.aop.service.*.*(..))")
+    public void pointcutServicePackage() {
+
+    }
+
+    @Pointcut("bean(*Service)")
+    public void pointcutServiceBean() {
+
+    }
+
+    @Pointcut("execution(public * *(..))")
+    public void pointcutPublicMethod() {
+
+    }
+
+    @Pointcut("pointcutServicePackage() && pointcutServiceBean() && pointcutPublicMethod()")
+    public void publicMethodForService() {
+
+    }
+
+    @Before("publicMethodForService()")
+    public void logAllPublicServiceMethod() {
+        log.info("Log for all public methods");
+    }
 
 }
